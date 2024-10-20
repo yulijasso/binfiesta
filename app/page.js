@@ -60,7 +60,7 @@ export default function Home() {
       >
         <Box flex="1" w="full"> {/* Ensure this container takes up the remaining space */}
           <WithSubnavigation />
-          <Box mt={12}> {/* Add margin top here, adjust the value as needed */}
+          <Box mt={10}> {/* Add margin top here, adjust the value as needed */}
             <HeroSection />
             <WaitlistCounter /> {/* Add the WaitlistCounter below the HeroSection */}
           </Box>

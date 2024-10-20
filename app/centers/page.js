@@ -1,11 +1,3 @@
-// get api key from google cloud console 
-// use Google Places API 
-
-// get user's location if they allow it  (longtitiude and longtitude)
-// check for nearest recycle center 
-// get nearest recycle centers
-// display nearest recycle centers 
-
 // centers/page.js
 'use client';
 import { useState, useEffect } from 'react';
@@ -64,18 +56,23 @@ export default function RecycleCentersPage() {
   };
 
   return (
-    <Box p={5}  bgGradient="linear(to-r, black, blue.400)"
-    color='white' minHeight='100vh'>
-    <Box textAlign="center" mb={6} mt={6}> 
-      <Text as='b' fontSize="2xl">Find Recycling Centers Near You</Text>
-    </Box>
+    // <Box p={5} bgGradient="linear(to-r, black, blue.400)" color="white" minHeight="100vh">
+      <Box textAlign="center" mb={6}>
+        <Text as="b" fontSize="2xl">
+          Find Recycling Centers Near You
+        </Text>
+      {/* </Box> */}
       {location ? (
-        <Text mb={4} textAlign="center">Location Retrieved! Click the button below to find recycling centers near you.</Text>
+        <Text mb={4} textAlign="center">
+          Location Retrieved! Click the button below to find recycling centers near you.
+        </Text>
       ) : (
-        <Text mb={4}  textAlign="center">Getting your location...</Text>
+        <Text mb={4} textAlign="center">
+          Getting your location...
+        </Text>
       )}
 
-      {loading && <Spinner size="lg"  />}
+      {loading && <Spinner size="lg" />}
 
       {error && (
         <Alert status="error" mb={4}>
@@ -84,27 +81,23 @@ export default function RecycleCentersPage() {
         </Alert>
       )}
 
-    <Box textAlign="center" mt={6} mb={6}>
-      <Button colorScheme="green" onClick={fetchRecycleCenters} isDisabled={!location || loading}>
-        Find Recycling Centers
-      </Button>
-    </Box>
+      <Box textAlign="center" mt={6} mb={6}>
+        <Button colorScheme="green" onClick={fetchRecycleCenters} isDisabled={!location || loading}>
+          Find Recycling Centers
+        </Button>
+      </Box>
 
       {centers.length > 0 && location && (
         <MapContainer location={location} centers={centers} />
       )}
 
-      <List spacing={3} mt={7}>
+      <List spacing={3} mt={7} width="100%">
         {centers.length > 0 ? (
           centers.map((center, index) => (
-            <ListItem key={index} p={3} border="1px solid #ddd" borderRadius="md"
-
-            width={{ base: '100%', md: '50%' }}
-            >
-              <Box >
-              <Text fontWeight="bold">{center.name}</Text>
-              <Text>{center.vicinity}</Text>
-
+            <ListItem key={index} p={3} border="1px solid #ddd" borderRadius="md">
+              <Box>
+                <Text fontWeight="bold">{center.name}</Text>
+                <Text>{center.vicinity}</Text>
               </Box>
             </ListItem>
           ))
