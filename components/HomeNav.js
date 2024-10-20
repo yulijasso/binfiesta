@@ -74,10 +74,9 @@ export default function WithSubnavigation() {
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            
             color={useColorModeValue('white', 'white')}
           >
-            Bin Fiesta ♻️
+            ♻️ Bin Fiesta
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -91,10 +90,10 @@ export default function WithSubnavigation() {
           direction={'row'}
           spacing={6}
         >
-          <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'/login'}>
+          {/* <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'/login'}>
             Sign In
-          </Button>
-          <Button
+          </Button> */}
+          {/* <Button
             as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
@@ -107,7 +106,7 @@ export default function WithSubnavigation() {
             }}
           >
             Sign Up
-          </Button>
+          </Button> */}
         </Stack>
       </Flex>
 
@@ -267,6 +266,5 @@ const MobileNavItem = ({ label, children, href }) => {
 }
 
 const NAV_ITEMS = [
-  
-   
+  // Add your navigation items here
 ]
