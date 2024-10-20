@@ -2,12 +2,14 @@
 import { Box, Flex } from '@chakra-ui/react'
 import HeroSection from '@/components/HeroSection'
 import WithSubnavigation from '@/components/HomeNav'
+import WaitlistCounter from '@/components/WaitlistCounter'
+import Chat from '@/components/Chat' // Import the Chat component
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Stream Fiesta</title>
+        <title>Bin Fiesta</title>
         <meta name="description" content="Welcome to Bin Fiesta" />
       </Head>
       <Flex
@@ -15,14 +17,18 @@ export default function Home() {
         align="center"
         justify="center"
         minH="100vh"
-        bgGradient="linear(to-r, black, blue.700)"
+        bgGradient="linear(to-r, black, blue.400)"
         color="white"
         textAlign="center"
-        overflow="hidden" // Prevents scrolling issues due to overflow
+        overflow="hidden"
       >
-        <Box flex="1" w="full"> 
-          <WithSubnavigation/>
-          <HeroSection/>
+        <Box flex="1" w="full">
+          <WithSubnavigation />
+          <Box mt={12}>
+            <HeroSection />
+            <WaitlistCounter />
+            <Chat />
+          </Box>
         </Box>
       </Flex>
     </>

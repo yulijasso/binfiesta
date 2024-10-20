@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        <link rel="icon" href="" sizes="any" />
+        <link rel="icon" href="/images/favicon.png" sizes="any" />
       </Head>
       <body className={inter.className}>
         <ChakraProvider>
