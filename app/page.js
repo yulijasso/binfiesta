@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection'
 import WithSubnavigation from '@/components/HomeNav'
 import WaitlistCounter from '@/components/WaitlistCounter'
 import Chat from '@/components/Chat' // Import the Chat component
+import Faq from '@/components/Faq'
 
 export default function Home() {
   return (
