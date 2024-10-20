@@ -78,20 +78,20 @@ export default function HeroSection() {
               Join the Waitlist
             </Button>
 
-            {/* Demo Button - Fix the nesting <a> issue */}
             <Link href="/demo" passHref>
-              <Button
-                as="a" // This ensures the Button renders as an anchor tag
-                rounded={'full'}
-                size={'lg'}
-                fontWeight={'normal'}
-                px={6}
-                bg={'white'}
-                color={'black'}
-                _hover={{ bg: 'gray.100' }}>
-                Try Our Demo     
-              </Button>
-            </Link>
+  <Button
+    rounded={'full'}
+    size={'lg'}
+    fontWeight={'normal'}
+    px={6}
+    bg={'white'}
+    color={'black'}
+    _hover={{ bg: 'gray.100' }}>
+    Try Our Demo
+  </Button>
+</Link>
+
+            
           </VStack>
         </Stack>
         
