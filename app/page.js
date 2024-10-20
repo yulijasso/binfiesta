@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Box, Flex } from '@chakra-ui/react'
 import HeroSection from '@/components/HeroSection'
 import WithSubnavigation from '@/components/HomeNav'
+import WaitlistCounter from '@/components/WaitlistCounter'; // Import the WaitlistCounter component
 
 export default function Home() {
   return (
@@ -21,9 +22,10 @@ export default function Home() {
         overflow="hidden" // Prevents scrolling issues due to overflow
       >
         <Box flex="1" w="full"> {/* Ensure this container takes up the remaining space */}
-          <WithSubnavigation/>
+          <WithSubnavigation />
           <Box mt={12}> {/* Add margin top here, adjust the value as needed */}
-            <HeroSection/>
+            <HeroSection />
+            <WaitlistCounter /> {/* Add the WaitlistCounter below the HeroSection */}
           </Box>
         </Box>
       </Flex>
