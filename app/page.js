@@ -1,10 +1,9 @@
-import Head from 'next/head'
-import { Box, Flex } from '@chakra-ui/react'
-import HeroSection from '@/components/HeroSection'
-import WithSubnavigation from '@/components/HomeNav'
-import WaitlistCounter from '@/components/WaitlistCounter'
-import Chat from '@/components/Chat' // Import the Chat component
-import Faq from '@/components/Faq'
+import Head from 'next/head';
+import { Box, Flex } from '@chakra-ui/react';
+import HeroSection from '@/components/HeroSection';
+import WithSubnavigation from '@/components/HomeNav';
+import Chat from '@/app/Chat'; // Import the Chat component
+import Faq from '@/components/Faq';
 
 export default function Home() {
   return (
@@ -27,11 +26,16 @@ export default function Home() {
           <WithSubnavigation />
           <Box mt={12}>
             <HeroSection />
-            <WaitlistCounter />
+          </Box>
+  
+          <Box mt={12}> {/* Added margin-top for spacing */}
             <Chat /> {/* Add the Chat component */}
+          </Box>
+          <Box mt={30}> {/* Added margin-top for spacing */}
+            <Faq /> 
           </Box>
         </Box>
       </Flex>
     </>
-  )
+  );
 }
