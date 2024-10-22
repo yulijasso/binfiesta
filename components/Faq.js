@@ -1,7 +1,7 @@
 "use client";  // Add this line at the very top
 
 import React, { useState } from 'react';
-import './faq.css'; // Ensure you have this line to import the CSS
+import './Faq.css'; // Ensure you have this line to import the CSS
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
