@@ -1,8 +1,9 @@
-import Head from 'next/head'
-import { Box, Flex } from '@chakra-ui/react'
-import HeroSection from '@/components/HeroSection'
-import WithSubnavigation from '@/components/HomeNav'
-import WaitlistCounter from '@/components/WaitlistCounter'; // Import the WaitlistCounter component
+import Head from 'next/head';
+import { Box, Flex } from '@chakra-ui/react';
+import HeroSection from '@/components/HeroSection';
+import WithSubnavigation from '@/components/HomeNav';
+import Chat from '@/app/Chat'; // Import the Chat component
+import Faq from '@/components/Faq';
 
 export default function Home() {
   return (
@@ -19,16 +20,22 @@ export default function Home() {
         bgGradient="linear(to-r, black, blue.400)"
         color="white"
         textAlign="center"
-        overflow="hidden" // Prevents scrolling issues due to overflow
+        overflow="hidden"
       >
-        <Box flex="1" w="full"> {/* Ensure this container takes up the remaining space */}
+        <Box flex="1" w="full">
           <WithSubnavigation />
-          <Box mt={12}> {/* Add margin top here, adjust the value as needed */}
+          <Box mt={12}>
             <HeroSection />
-            <WaitlistCounter /> {/* Add the WaitlistCounter below the HeroSection */}
+          </Box>
+  
+          <Box mt={12}> {/* Added margin-top for spacing */}
+            <Chat /> {/* Add the Chat component */}
+          </Box>
+          <Box mt={30}> {/* Added margin-top for spacing */}
+            <Faq /> 
           </Box>
         </Box>
       </Flex>
     </>
-  )
+  );
 }
