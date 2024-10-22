@@ -6,52 +6,180 @@
 import React, { useState } from "react";
 import { Box, Button, Flex, Heading, Input, VStack, Text } from "@chakra-ui/react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import ChatHistory from "../components/ChatHistory";
-import Loading from "../components/Loading";
+import ChatHistory from "../components/ChatHistory"; // Assuming you have a separate component for chat history
+import Loading from "../components/Loading"; // Assuming you have a loading spinner component
+
+
 
 const App = () => {
+
+
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
 
-  const genAI = new GoogleGenerativeAI("AIzaSyCBMB5iF6WAokgY84vf0sm97fahMz2wwvw");
+  const genAI = new GoogleGenerativeAI("AIzaSyCBMB5iF6WAokgY84vf0sm97fahMz2wwvw"); // Update with your actual API key
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
   };
-
+/*
   const sendMessage = async () => {
     if (userInput.trim() === "") return;
     setIsLoading(true);
-
+  
     try {
-      let prompt = userInput;
+        let responseText;
 
-      if (userInput.toLowerCase().includes("bin fiesta")) {
-        prompt = `You are an interactive chatbot. Bin Fiesta is an innovative recycling app that allows users to take pictures of items to determine their recyclability. It offers instant disposal tips to promote sustainable habits. Bin Fiesta covers a variety of materials, including paper, plastic, metals, and more, and uses advanced image recognition for analysis. It's completely free, prioritizes user privacy, and includes future plans to offer gamification features and localized recycling guidelines. Whether for individuals or businesses, Bin Fiesta aims to enhance environmental awareness through technology.`;
-      }
+        // Check for greeting messages
+        const greetings = ["hello", "hi", "hey"];
+        if (greetings.includes(userInput.trim().toLowerCase())) {
+            responseText = "Hello there! How can I help you today? 😊";
+        } 
+        // Check for specific questions and provide concise answers
+        else {
+            const lowerCaseInput = userInput.toLowerCase().trim(); // Normalize input
+  
+            // Inline FAQ information
+            if (lowerCaseInput.includes("what is bin fiesta")) {
+                responseText = "Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image.";
+            } else if (lowerCaseInput.includes("how does bin fiesta work")) {
+                responseText = "You take a picture of an item, and Bin Fiesta analyzes it to determine if it can be recycled, providing tips for proper disposal.";
+            } else if (lowerCaseInput.includes("is bin fiesta free")) {
+                responseText = "Yes, Bin Fiesta is free to use for everyone.";
+            } else if (lowerCaseInput.includes("do i need an account")) {
+                responseText = "No account is necessary for basic features. In the near future, we plan to add the option to create profiles to allow you to track your recycling habits and earn rewards.";
+            } else if (lowerCaseInput.includes("how accurate is bin fiesta")) {
+                responseText = "Bin Fiesta uses advanced image recognition and a regularly updated database to ensure accuracy.";
+            } else if (lowerCaseInput.includes("can bin fiesta provide recycling information for my location")) {
+                responseText = "Yes, Bin Fiesta can offer localized recycling information and guidelines based on your location to help you recycle correctly.";
+            } else if (lowerCaseInput.includes("what should i do if bin fiesta cannot recognize an item")) {
+                responseText = "If Bin Fiesta cannot recognize an item, you can manually search for it in our database or submit feedback to help improve our image recognition technology.";
+            } else if (lowerCaseInput.includes("what types of items can i scan")) {
+                responseText = "You can scan a wide range of items, including plastics, metals, paper, and cardboard. Bin Fiesta is constantly updating its database to include more materials.";
+            } else if (lowerCaseInput.includes("is my personal information safe")) {
+                responseText = "Yes, Bin Fiesta takes user privacy seriously. We do not share your personal information with third parties without your consent.";
+            } else if (lowerCaseInput.includes("what are the future plans for bin fiesta")) {
+                responseText = "We plan to introduce more features, such as gamification elements, community challenges, and partnerships with local recycling centers to enhance user engagement and promote sustainable practices.";
+            } 
+            // Respond with the AI model for unrecognized terms
+            else {
+                const prompt = `You are an interactive chatbot that answers questions about Bin Fiesta, a photo-based recycling app. You should provide accurate information about the app's features, recycling practices, and disposal tips. If you don't know the answer, apologize and inform the user to send an email to binfiestasupport@gmail.com for further support. User: ${userInput} Bot:`;
 
-      const result = await model.generateContent(prompt);
-      const responseText = await result.response?.text();
+                const result = await model.generateContentStream(prompt);
 
-      if (responseText) {
-        setChatHistory([
-          ...chatHistory,
-          { type: "user", message: userInput },
-          { type: "bot", message: responseText },
+// Print text as it comes in.
+for await (const chunk of result.stream) {
+  const chunkText = chunk.text();
+  process.stdout.write(chunkText);
+}
+        }
+  
+        // Update the chat history with the response
+        setChatHistory(prevHistory => [
+            ...prevHistory,
+            { type: "user", message: userInput },
+            { type: "bot", message: responseText || "I'm sorry, I couldn't understand that." }, // Fallback message
         ]);
-      } else {
-        console.error("Received an invalid response");
-      }
+        
     } catch (error) {
-      console.error("Error sending message", error);
+        console.error("Error sending message:", error);
+        setChatHistory(prevHistory => [
+            ...prevHistory,
+            { type: "bot", message: "Sorry, there was an error processing your request." },
+        ]);
     } finally {
+        setUserInput("");
+        setIsLoading(false);
+    }
+};
+
+
+*/
+
+const sendMessage = async () => {
+  if (userInput.trim() === "") return;
+  setIsLoading(true);
+
+  try {
+      let responseText;
+
+      // Check for greeting messages
+      const greetings = ["hello", "hi", "hey"];
+      if (greetings.includes(userInput.trim().toLowerCase())) {
+          responseText = "Hello there! How can I help you today? 😊";
+      } 
+      // Check for specific questions and provide concise answers
+      else {
+          const lowerCaseInput = userInput.toLowerCase().trim(); // Normalize input
+
+          // Inline FAQ information
+          if (lowerCaseInput.includes("what is bin fiesta")) {
+            responseText = "Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image.";
+        } else if (lowerCaseInput.includes("how does bin fiesta work")) {
+            responseText = "You take a picture of an item, and Bin Fiesta analyzes it to determine if it can be recycled, providing tips for proper disposal.";
+        } else if (lowerCaseInput.includes("is bin fiesta free")) {
+            responseText = "Yes, Bin Fiesta is free to use for everyone.";
+        } else if (lowerCaseInput.includes("do i need an account")) {
+            responseText = "No account is necessary for basic features. In the near future, we plan to add the option to create profiles to allow you to track your recycling habits and earn rewards.";
+        } else if (lowerCaseInput.includes("how accurate is bin fiesta")) {
+            responseText = "Bin Fiesta uses advanced image recognition and a regularly updated database to ensure accuracy.";
+        } else if (lowerCaseInput.includes("can bin fiesta provide recycling information for my location")) {
+            responseText = "Yes, Bin Fiesta can offer localized recycling information and guidelines based on your location to help you recycle correctly.";
+        } else if (lowerCaseInput.includes("what should i do if bin fiesta cannot recognize an item")) {
+            responseText = "If Bin Fiesta cannot recognize an item, you can manually search for it in our database or submit feedback to help improve our image recognition technology.";
+        } else if (lowerCaseInput.includes("what types of items can i scan")) {
+            responseText = "You can scan a wide range of items, including plastics, metals, paper, and cardboard. Bin Fiesta is constantly updating its database to include more materials.";
+        } else if (lowerCaseInput.includes("is my personal information safe")) {
+            responseText = "Yes, Bin Fiesta takes user privacy seriously. We do not share your personal information with third parties without your consent.";
+        } else if (lowerCaseInput.includes("what are the future plans for bin fiesta")) {
+            responseText = "We plan to introduce more features, such as gamification elements, community challenges, and partnerships with local recycling centers to enhance user engagement and promote sustainable practices.";
+        } 
+        // Respond with the AI model for unrecognized terms
+          else {
+          
+              try {
+                const prompt = `You are an interactive chatbot that answers questions about Bin Fiesta, a photo-based recycling app. You should provide accurate information about the app's features, recycling practices, and disposal tips. If you don't know the answer, apologize and inform the user to send an email to binfiestasupport@gmail.com for further support. User: ${userInput} Bot:`;
+
+                  const result = await model.generateContentStream(prompt);
+                  let aiResponse = '';
+
+                  for await (const chunk of result.stream) {
+                      aiResponse += chunk.text();
+                  }
+                  
+                  responseText = aiResponse; // Set responseText to the final AI response
+              } catch (aiError) {
+                  console.error("Error in AI response:", aiError);
+                  responseText = "Sorry, I couldn't process that request. Please contact support.";
+              }
+          }
+      }
+
+      // Update the chat history with the response
+      setChatHistory(prevHistory => [
+          ...prevHistory,
+          { type: "user", message: userInput },
+          { type: "bot", message: responseText || "I'm sorry, I couldn't understand that." }, // Fallback message
+      ]);
+      
+  } catch (error) {
+      console.error("Error sending message:", error);
+      setChatHistory(prevHistory => [
+          ...prevHistory,
+          { type: "bot", message: "Sorry, there was an error processing your request." },
+      ]);
+  } finally {
       setUserInput("");
       setIsLoading(false);
-    }
-  };
+  }
+};
+
+
 
   const clearChat = () => {
     setChatHistory([]);
@@ -63,14 +191,14 @@ const App = () => {
 
   const ChatBubble = ({ type, message }) => (
     <Flex
-      bg={type === "user" ? "green.400" : "blue.400"} // Different background for user and bot
+      bg={type === "user" ? "green.400" : "blue.400"}
       color="white"
-      p={4} // Padding
-      mb={3} // Margin-bottom for spacing
+      p={4}
+      mb={3}
       rounded="lg"
       maxWidth="80%"
       flexDirection="column"
-      textAlign="left" // Left align text
+      textAlign="left"
     >
       <Text fontWeight="bold">{type === "user" ? "You" : "Bot"}</Text>
       <Text fontSize="md">{message}</Text>
