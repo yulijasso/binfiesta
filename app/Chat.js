@@ -70,7 +70,7 @@ const sendMessage = async () => {
           else {
           
               try {
-                const prompt = `You are an interactive chatbot that answers questions about Bin Fiesta, a photo-based recycling app. You should provide accurate information about the app's features, recycling practices, and disposal tips. If you don't know the answer, apologize and inform the user to send an email to binfiestasupport@gmail.com for further support. User: ${userInput} Bot:`;
+                const prompt = `You are an interactive chatbot that answers questions about Bin Fiesta, a photo-based recycling app. You should provide accurate information about the app's features, recycling practices, and disposal tips. If you don't know the answer, apologize and inform the user to send an email to binfiesta.support@gmail.com for further support. User: ${userInput} Bot:`;
 
                   const result = await model.generateContentStream(prompt);
                   let aiResponse = '';
