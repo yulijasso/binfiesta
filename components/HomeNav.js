@@ -13,10 +13,7 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
-import {
-  HamburgerIcon,
-  CloseIcon,
-} from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import WaitlistModal from './WaitlistModal'; // Import the modal component
 
@@ -33,6 +30,13 @@ export default function WithSubnavigation() {
 
   const navBarHeight = scrollY > 50 ? '50px' : '60px';
   const navBarOpacity = scrollY > 50 ? 0.9 : 1;
+
+  // Move useColorModeValue outside of the JSX
+  const bgColor = useColorModeValue('black', 'black');
+  const textColor = useColorModeValue('white', 'white');
+  const linkColor = useColorModeValue('white', 'white');
+  const linkHoverColor = useColorModeValue('green.400', 'green.400');
+  const textAlignValue = useBreakpointValue({ base: 'center', md: 'left' });
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -54,8 +58,8 @@ export default function WithSubnavigation() {
       zIndex={1000}
     >
       <Flex
-        bg={useColorModeValue('black', 'black')}
-        color={useColorModeValue('white', 'white')}
+        bg={bgColor}
+        color={textColor}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -68,13 +72,7 @@ export default function WithSubnavigation() {
         >
           <IconButton
             onClick={onToggle}
-            icon={
-              isOpen ? (
-                <CloseIcon w={3} h={3} />
-              ) : (
-                <HamburgerIcon w={5} h={5} />
-              )
-            }
+            icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
           />
@@ -82,8 +80,8 @@ export default function WithSubnavigation() {
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link href="/" passHref>
             <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              color={useColorModeValue('white', 'white')}
+              textAlign={textAlignValue}
+              color={textColor}
               fontWeight="bold"
               fontSize="xl"
               cursor="pointer"
@@ -93,16 +91,11 @@ export default function WithSubnavigation() {
           </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav />
+            <DesktopNav linkColor={linkColor} linkHoverColor={linkHoverColor} />
           </Flex>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}
-        >
+        <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
           {/* Waitlist Button */}
           <Button
             onClick={handleModalOpen} // Open the modal on click
@@ -111,9 +104,7 @@ export default function WithSubnavigation() {
             fontWeight={600}
             color={'white'}
             bg={'green.400'}
-            _hover={{
-              bg: 'green.300',
-            }}
+            _hover={{ bg: 'green.300' }}
           >
             Join Waitlist
           </Button>
@@ -126,9 +117,7 @@ export default function WithSubnavigation() {
               fontWeight={600}
               bg={'white'}
               color={'black'}
-              _hover={{
-                bg: 'gray.100',
-              }}
+              _hover={{ bg: 'gray.100' }}
             >
               Demo
             </Button>
@@ -137,7 +126,7 @@ export default function WithSubnavigation() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav linkColor={linkColor} textColor={textColor} />
       </Collapse>
 
       {/* Waitlist Modal */}
@@ -146,10 +135,7 @@ export default function WithSubnavigation() {
   );
 }
 
-const DesktopNav = () => {
-  const linkColor = useColorModeValue('white', 'white');
-  const linkHoverColor = useColorModeValue('green.400', 'green.400');
-
+const DesktopNav = ({ linkColor, linkHoverColor }) => {
   return (
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
@@ -174,28 +160,14 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({ linkColor, textColor }) => {
   return (
-    <Stack
-      bg={useColorModeValue('black', 'black')}
-      p={4}
-      display={{ md: 'none' }}
-    >
+    <Stack bg={linkColor} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <Stack spacing={4} key={navItem.label}>
           <Link href={navItem.href ?? '#'}>
-            <Box
-              py={2}
-              justifyContent="space-between"
-              alignItems="center"
-              _hover={{
-                textDecoration: 'none',
-              }}
-            >
-              <Text
-                fontWeight={600}
-                color={useColorModeValue('white', 'white')}
-              >
+            <Box py={2} justifyContent="space-between" alignItems="center" _hover={{ textDecoration: 'none' }}>
+              <Text fontWeight={600} color={textColor}>
                 {navItem.label}
               </Text>
             </Box>
