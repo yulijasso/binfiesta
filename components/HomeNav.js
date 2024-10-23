@@ -122,6 +122,22 @@ export default function WithSubnavigation() {
               Demo
             </Button>
           </Link>
+
+            {/* FAQ Button */}
+    <Link href="/Faq" passHref>
+        <Button
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'white'}
+            bg={'black'}
+            _hover={{ bg: 'gray.800' }}>
+            FAQ
+        </Button>
+    </Link>
+
+
+
         </Stack>
       </Flex>
 
@@ -179,9 +195,9 @@ const MobileNav = ({ linkColor, textColor }) => {
 };
 
 const NAV_ITEMS = [
-  {
-    label: 'FAQ',
-    href: '/faq',
-  },
+  //{
+   // label: 'FAQ',
+    //href: '/faq',
+  //},
   // You can add more navigation items here
 ];

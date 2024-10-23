@@ -3,7 +3,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import HeroSection from '@/components/HeroSection';
 import WithSubnavigation from '@/components/HomeNav';
 import Chat from '@/app/Chat'; // Import the Chat component
-import Faq from '@/components/Faq';
+
 
 export default function Home() {
   return (
@@ -31,9 +31,7 @@ export default function Home() {
           <Box mt={12}> {/* Added margin-top for spacing */}
             <Chat /> {/* Add the Chat component */}
           </Box>
-          <Box mt={30}> {/* Added margin-top for spacing */}
-            <Faq /> 
-          </Box>
+          
         </Box>
       </Flex>
     </>
