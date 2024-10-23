@@ -43,7 +43,7 @@ const sendMessage = async () => {
 
           // Inline FAQ information
           if (lowerCaseInput.includes("what is bin fiesta")) {
-            responseText = "Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image.";
+            responseText = "Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image. We also offer the option for an individual to locate the nearest recycle centers based on their current location. Protecting our planet starts with you! 🌎♻️";
         } else if (lowerCaseInput.includes("how does bin fiesta work")) {
             responseText = "You take a picture of an item, and Bin Fiesta analyzes it to determine if it can be recycled, providing tips for proper disposal.";
         } else if (lowerCaseInput.includes("is bin fiesta free")) {
@@ -55,7 +55,7 @@ const sendMessage = async () => {
         } else if (lowerCaseInput.includes("can bin fiesta provide recycling information for my location")) {
             responseText = "Yes, Bin Fiesta can offer localized recycling information and guidelines based on your location to help you recycle correctly.";
         } else if (lowerCaseInput.includes("what should i do if bin fiesta cannot recognize an item")) {
-            responseText = "If Bin Fiesta cannot recognize an item, you can manually search for it in our database or submit feedback to help improve our image recognition technology.";
+            responseText = "If Bin Fiesta cannot recognize an item, you can submit feedback to help improve our image recognition technology by contacting our customer support, binfiesta.support@gmail.com.";
         } else if (lowerCaseInput.includes("what types of items can i scan")) {
             responseText = "You can scan a wide range of items, including plastics, metals, paper, and cardboard. Bin Fiesta is constantly updating its database to include more materials.";
         } else if (lowerCaseInput.includes("is my personal information safe")) {
@@ -79,7 +79,7 @@ const sendMessage = async () => {
                   responseText = aiResponse; // Set responseText to the final AI response
               } catch (aiError) {
                   console.error("Error in AI response:", aiError);
-                  responseText = "Sorry, I couldn't process that request. Please contact support.";
+                  responseText = "Sorry, I couldn't process that request. Please contact support, binfiesta.support@gmail.com.";
               }
           }
       }

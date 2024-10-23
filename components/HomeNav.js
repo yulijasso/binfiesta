@@ -123,14 +123,29 @@ export default function WithSubnavigation() {
             </Button>
           </Link>
 
+
+
+          {/* About Us */}
+    <Link href="/About" passHref>
+        <Button
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'black'}
+            bg={'white'}
+            _hover={{ bg: 'gray.100' }}>
+            About Us
+        </Button>
+    </Link>
+
             {/* FAQ Button */}
     <Link href="/Faq" passHref>
         <Button
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
-            color={'white'}
-            bg={'black'}
+            color={'black'}
+            bg={'white'}
             _hover={{ bg: 'gray.800' }}>
             FAQ
         </Button>
