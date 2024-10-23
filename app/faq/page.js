@@ -11,7 +11,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'What is Bin Fiesta?',
-      answer: 'Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image. We also offer the option for an individual to locate the nearest recycle centers based on their current location. Protecting our planet starts with you! 🌎♻️'
+      answer: 'Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image. We also offer the option to locate the nearest recycle centers based on their current location. Protecting our planet starts with you! 🌎♻️'
     },
     {
       question: 'How does Bin Fiesta work?',

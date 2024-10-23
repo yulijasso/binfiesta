@@ -43,7 +43,7 @@ const sendMessage = async () => {
 
           // Inline FAQ information
           if (lowerCaseInput.includes("what is bin fiesta")) {
-            responseText = "Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image. We also offer the option for an individual to locate the nearest recycle centers based on their current location. Protecting our planet starts with you! 🌎♻️";
+            responseText = "Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image. We also offer the option to locate the nearest recycle centers based on their current location. Protecting our planet starts with you! 🌎♻️";
         } else if (lowerCaseInput.includes("how does bin fiesta work")) {
             responseText = "You take a picture of an item, and Bin Fiesta analyzes it to determine if it can be recycled, providing tips for proper disposal.";
         } else if (lowerCaseInput.includes("is bin fiesta free")) {
