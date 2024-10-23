@@ -2,10 +2,8 @@
 
 import React, { useState } from 'react';
 import './Faq.css'; // Ensure you have this line to import the CSS
-import { Box, Heading } from '@chakra-ui/react'; // Import necessary Chakra UI components
-
-
-
+import { Box, Heading, Text } from '@chakra-ui/react'; // Import necessary Chakra UI components
+import Link from 'next/link'; // Import the Link component
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -13,7 +11,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'What is Bin Fiesta?',
-      answer: 'Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image.'
+      answer: 'Bin Fiesta is an innovative recycling app that helps you identify whether an item can be recycled by simply uploading an image. We also offer the option for an individual to locate the nearest recycle centers based on their current location. Protecting our planet starts with you! 🌎♻️'
     },
     {
       question: 'How does Bin Fiesta work?',
@@ -37,7 +35,7 @@ const FAQ = () => {
     },
     {
       question: 'What should I do if Bin Fiesta cannot recognize an item?',
-      answer: 'If Bin Fiesta cannot recognize an item, you can manually search for it in our database or submit feedback to help improve our image recognition technology.'
+      answer: 'If Bin Fiesta cannot recognize an item, you can submit feedback to help improve our image recognition technology by contacting our customer support, binfiesta.support@gmail.com.'
     },
     {
       question: 'What types of items can I scan with Bin Fiesta?',
@@ -69,6 +67,21 @@ const FAQ = () => {
       overflow="hidden"
       className="faq-container"
     >
+      {/* Add the logo with a link back to the home page */}
+      <Box position="absolute" top="20px" left="20px">
+        <Link href="/" passHref>
+          <Text
+            fontSize="2xl"
+            fontWeight="bold"
+            color="white"
+            cursor="pointer"
+            _hover={{ transform: 'scale(1.1)', transition: 'transform 0.2s ease' }}
+          >
+            Bin Fiesta ♻️
+          </Text>
+        </Link>
+      </Box>
+
       <div className="faq-inner">
         <Heading as="h1" size="2xl" mb={4}>Bin Fiesta FAQs ♻️</Heading>
         {faqs.map((faq, index) => (
