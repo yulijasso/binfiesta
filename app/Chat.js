@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import React, { useState } from "react";
@@ -5,6 +7,7 @@ import { Box, Button, Flex, Heading, Input, VStack, Text } from "@chakra-ui/reac
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import ChatHistory from "../components/ChatHistory"; // Assuming you have a separate component for chat history
 import Loading from "../components/Loading"; // Assuming you have a loading spinner component
+import Image from 'next/image';
 
 
 
@@ -15,6 +18,7 @@ const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
+ 
 
   const genAI = new GoogleGenerativeAI("AIzaSyCBMB5iF6WAokgY84vf0sm97fahMz2wwvw"); // Update with your actual API key
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -67,7 +71,7 @@ const sendMessage = async () => {
           else {
           
               try {
-                const prompt = `You are an interactive chatbot that answers questions about Bin Fiesta, a photo-based recycling app. You should provide accurate information about the app's features, recycling practices, and disposal tips. If you don't know the answer, apologize and inform the user to send an email to binfiesta.support@gmail.com for further support. User: ${userInput} Bot:`;
+                const prompt = `You are an interactive chatbot that answers questions about Bin Fiesta, a photo-based recycling app. You should provide accurate information about the app's features, recycling practices, and disposal tips. You should be able to help users to easily locate nearby recycling centers by directing them to the app's functionality, Centers, where it lets the user find recycling centers near them. If you don't know the answer, apologize and inform the user to send an email to binfiesta.support@gmail.com for further support. User: ${userInput} Bot:`;
 
                   const result = await model.generateContentStream(prompt);
                   let aiResponse = '';
@@ -131,19 +135,27 @@ const sendMessage = async () => {
 
   return (
     <>
-      <Button
-        position="fixed"
-        bottom="10px"
-        right="10px"
-        bg="green.400"
-        color="white"
-        p={6}
-        rounded="full"
-        shadow="lg"
-        onClick={toggleChatVisibility}
-      >
-        {isChatVisible ? "Hide Chat" : "Support Chat"}
-      </Button>
+{/* Image as Chat Toggle Button */}
+<Box
+  as="button"
+  position="fixed"
+  bottom="10px"
+  right="10px"
+  onClick={toggleChatVisibility}
+  p={0} // Remove padding
+  rounded="full"
+  shadow="lg"
+  display="flex"
+  alignItems="center"
+  justifyContent="center"
+>
+  <Image
+    src="/images/leaffffff.png"
+    alt="Chat Toggle"
+    width={100}  // Adjust if necessary
+    height={100} // Adjust if necessary
+  />
+</Box>
 
       {isChatVisible && (
         <Box
@@ -211,3 +223,5 @@ const sendMessage = async () => {
 };
 
 export default App;
+
+

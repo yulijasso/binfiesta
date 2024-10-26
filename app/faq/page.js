@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import './Faq.css'; // Ensure you have this line to import the CSS
 import { Box, Heading, Text } from '@chakra-ui/react'; // Import necessary Chakra UI components
 import Link from 'next/link'; // Import the Link component
+import Chat from '@/app/Chat'; // Import the Chat component
+
+
+
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -51,9 +55,12 @@ const FAQ = () => {
     },
   ];
 
+
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+
 
   return (
     <Box
@@ -82,6 +89,9 @@ const FAQ = () => {
         </Link>
       </Box>
 
+      
+
+
       <div className="faq-inner">
         <Heading as="h1" size="2xl" mb={4}>Bin Fiesta FAQs ♻️</Heading>
         {faqs.map((faq, index) => (
@@ -98,9 +108,50 @@ const FAQ = () => {
             </div>
           </div>
         ))}
+
+
+
+
+{/* Add the support contact information */}
+<Text 
+  fontSize="lg" 
+  mt={20} // Add more spacing between the FAQ and the contact section
+  color="white" 
+  fontWeight="bold" 
+  fontFamily="Arial, sans-serif"
+>
+  If you have any other questions, feel free to contact customer support: 
+</Text>
+<Text 
+  as="span" 
+  color="green.400" 
+  mt={2} 
+  fontSize="lg" 
+  fontWeight="bold" 
+  fontFamily="Arial, sans-serif"
+>
+  <a href="mailto:binfiesta.support@gmail.com" style={{ color: 'green.400' }}>
+    binfiesta.support@gmail.com
+  </a>
+</Text>
+
+
+
+
       </div>
+
+      <Box mt={12}> {/* Added margin-top for spacing */}
+            <Chat /> {/* Add the Chat component */}
+          </Box>
     </Box>
+
+
+
+
   );
+
 };
+
+
 
 export default FAQ;

@@ -123,6 +123,20 @@ export default function WithSubnavigation() {
             </Button>
           </Link>
 
+      {/* Mission */}
+    <Link href="/Mission" passHref>
+        <Button
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'black'}
+            bg={'white'}
+            _hover={{ bg: 'gray.800' }}>
+            Our Mission
+        </Button>
+    </Link>
+
+
 
 
           {/* About Us */}
