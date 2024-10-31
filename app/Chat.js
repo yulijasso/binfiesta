@@ -20,7 +20,7 @@ const App = () => {
   const [isChatVisible, setIsChatVisible] = useState(false);
  
 
-  const genAI = new GoogleGenerativeAI("AIzaSyCBMB5iF6WAokgY84vf0sm97fahMz2wwvw"); // Update with your actual API key
+  const genAI = new GoogleGenerativeAI("..."); 
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
