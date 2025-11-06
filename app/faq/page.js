@@ -1,7 +1,7 @@
 "use client";  // Add this line at the very top
 
 import React, { useState } from 'react';
-import './Faq.css'; // Ensure you have this line to import the CSS
+import './faq.css'; // Ensure you have this line to import the CSS
 import { Box, Heading, Text } from '@chakra-ui/react'; // Import necessary Chakra UI components
 import Link from 'next/link'; // Import the Link component
 import Chat from '@/app/Chat'; // Import the Chat component
