@@ -153,7 +153,7 @@ export default function WithSubnavigation() {
     </Link>
 
             {/* FAQ Button */}
-    <Link href="/Faq" passHref>
+    <Link href="/faq" passHref>
         <Button
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
